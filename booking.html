@@ -1,0 +1,189 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>FanTrans.co - Pemesanan Tiket</title>
+  <link rel="stylesheet" href="styles.css">
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.8.1/slick.min.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.8.1/slick-theme.min.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+  <script src="https://kit.fontawesome.com/a076d05399.js"></script>
+</head>
+<body>
+  <header class="header">
+    <div class="container">
+      <div class="company-name">
+        <h1>FanTrans.co</h1>
+      </div>
+      <nav class="navbar">
+        <ul>
+          <li><a href="index.html">Beranda</a></li>
+          <li><a href="about.html">Tentang Kami</a></li>
+          <li><a href="fleet.html">Armada</a></li>
+          <li><a href="destination.html">Tujuan Wisata</a></li>
+          <li><a href="booking.html">Pemesanan</a></li>
+          <li><a href="contact.html">Kontak</a></li>
+          <li><a href="suggestions.html">Saran</a></li>
+          <li><a href="guestbook.html">Buku Tamu</a></li>
+        </ul>
+      </nav>
+    </div>
+  </header>
+  <section class="section booking-section">
+    <div class="container">
+      <h2>Pemesanan Tiket</h2>
+      <form id="booking-form" action="ticket.html" method="post">
+        <div class="form-group">
+          <label for="nama">Nama Lengkap:</label>
+          <input type="text" id="nama" name="nama" required>
+        </div>
+        <div class="form-group">
+          <label for="email">Email:</label>
+          <input type="email" id="email" name="email" required>
+        </div>
+        <div class="form-group">
+          <label for="telepon">Nomor Telepon:</label>
+          <input type="tel" id="telepon" name="telepon" required>
+        </div>
+        <div class="form-group">
+          <label for="tujuan">Tujuan:</label>
+          <select id="tujuan" name="tujuan" required>
+            <option value="Bali">Bali</option>
+            <option value="Yogyakarta">Yogyakarta</option>
+            <option value="Bandung">Bandung</option>
+            <option value="Surabaya">Surabaya</option>
+            <option value="Malang">Malang</option>
+            <option value="Medan">Medan</option>
+            <option value="Padang">Padang</option>
+            <option value="Banda Aceh">Banda Aceh</option>
+            <option value="Bogor">Bogor</option>
+          </select>
+        </div>
+        <div class="form-group">
+          <label for="tanggal">Tanggal Keberangkatan:</label>
+          <input type="date" id="tanggal" name="tanggal" required>
+        </div>
+        <div class="form-group">
+          <label for="jumlah">Jumlah Penumpang:</label>
+          <input type="number" id="jumlah" name="jumlah" min="1" max="10" required>
+        </div>
+        <div class="form-group">
+          <label for="bus">Jenis Bus:</label>
+          <select id="bus" name="bus" required>
+            <option value="">Pilih Jenis Bus</option>
+            <option value="Bus Eksekutif">Bus Eksekutif</option>
+            <option value="Bus Pariwisata">Bus Pariwisata</option>
+            <option value="Bus Bisnis">Bus Bisnis</option>
+            <option value="Bus Executive Plus">Bus Executive Plus</option>
+            <option value="Bus Wisata Premium">Bus Wisata Premium</option>
+            <option value="Bus Ekonomi">Bus Ekonomi</option>
+            <option value="Bus VIP">Bus VIP</option>
+            <option value="Bus Super Executive">Bus Super Executive</option>
+            <option value="Bus VIP Luxury">Bus VIP Luxury</option>
+          </select>
+        </div>
+        <div id="harga-info" style="display: none;">
+          <label for="harga">Total Harga:</label>
+          <span id="harga"></span>
+        </div>
+        <button type="button" onclick="tampilkanHarga()" class="button-gradient">Tampilkan Total Harga</button>
+        <button type="button" onclick="pesanSekarang()" class="button-gradient">Pesan Sekarang</button>
+      </form>
+    </div>
+  </section>
+
+  <footer class="footer">
+    <div class="container">
+      <div class="footer-content">
+        <div class="footer-left">
+          <h3>FanTrans.co</h3>
+          <p>Menyediakan layanan transportasi dengan berbagai pilihan armada untuk kebutuhan perjalanan Anda.</p>
+          <div class="social-media-icons">
+            <a href="#"><i class="fab fa-facebook-f"></i></a>
+            <a href="#"><i class="fab fa-twitter"></i></a>
+            <a href="#"><i class="fab fa-instagram"></i></a>
+          </div>
+        </div>
+        <div class="footer-right">
+          <h3>Kontak Kami</h3>
+          <ul>
+            <li><i class="fas fa-map-marker-alt"></i> Jl. Transportasi No. 123, Kota Anda</li>
+            <li><i class="fas fa-phone-alt"></i> +62 123 4567 890</li>
+            <li><i class="fas fa-envelope"></i> info@fantrans.co</li>
+          </ul>
+        </div>
+      </div>
+      <div class="footer-bottom">
+        <p>&copy; 2024 FanTrans.co. All rights reserved.</p>
+      </div>
+    </div>
+  </footer>
+  <script>
+    function pesanSekarang() {
+      const jumlah = document.getElementById('jumlah').value;
+      const bus = document.getElementById('bus').value;
+      if (jumlah && bus) {
+        let hargaPerPenumpang = 0;      
+        switch (bus) {
+          case 'Bus Eksekutif':
+            hargaPerPenumpang = 300000;
+            break;
+          case 'Bus Pariwisata':
+            hargaPerPenumpang = 250000; 
+            break;
+          case 'Bus Bisnis':
+            hargaPerPenumpang = 275000;
+            break;
+            case 'Bus Executive Plus':
+            hargaPerPenumpang = 280000; 
+            break;
+            case 'Bus Wisata Premium':
+            hargaPerPenumpang = 300000; 
+            break;
+            case 'Bus Ekonomi':
+            hargaPerPenumpang = 200000; 
+            break;
+            case 'VIP':
+            hargaPerPenumpang = 350000; 
+            break;
+            case 'Bus Super Executive':
+            hargaPerPenumpang = 400000; 
+            break;
+            case 'Bus VIP Luxury':
+            hargaPerPenumpang = 500000; 
+            break;
+        }
+        const totalHarga = hargaPerPenumpang * jumlah;
+        const hargaSpan = document.getElementById('harga');
+        hargaSpan.textContent = `Rp ${totalHarga.toLocaleString()}`;
+        document.getElementById('harga-info').style.display = 'block';
+        window.location.href = 'ticket.html';
+      } else {
+        alert('Silakan pilih jenis bus dan masukkan jumlah penumpang.');
+      }
+    }
+    function pesanSekarang() {
+      const jumlah = document.getElementById('jumlah').value;
+      const bus = document.getElementById('bus').value;
+      if (jumlah && bus) {
+        window.location.href = 'ticket.html';
+      } else {
+        alert('Silakan pilih jenis bus dan masukkan jumlah penumpang.');
+      }
+    }
+  </script>
+  <script src="script.js"></script>
+  <script>
+    window.addEventListener('scroll', function() {
+      const header = document.querySelector('.header');
+      if (window.scrollY > 50) {
+        header.classList.add('scrolled');
+      } else {
+        header.classList.remove('scrolled');
+      }
+    });
+  </script>
+</body>
+</html>

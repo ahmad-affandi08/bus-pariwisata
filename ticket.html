@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>FanTrans.co - Tiket Pemesanan</title>
+  <link rel="stylesheet" href="styles.css">
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.8.1/slick.min.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.8.1/slick-theme.min.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+  <script src="https://kit.fontawesome.com/a076d05399.js"></script>
+</head>
+<body>
+  <header class="header">
+    <div class="container">
+      <div class="company-name">
+        <h1>FanTrans.co</h1>
+      </div>
+      <nav class="navbar">
+        <ul>
+          <li><a href="index.html">Beranda</a></li>
+          <li><a href="about.html">Tentang Kami</a></li>
+          <li><a href="fleet.html">Armada</a></li>
+          <li><a href="destination.html">Tujuan Wisata</a></li>
+          <li><a href="booking.html">Pemesanan</a></li>
+          <li><a href="contact.html">Kontak</a></li>
+          <li><a href="suggestions.html">Saran</a></li>
+          <li><a href="guestbook.html">Buku Tamu</a></li>
+        </ul>
+      </nav>
+    </div>
+  </header>
+  <section class="section ticket-section">
+    <div class="container">
+        <h2>Detail Tiket Pemesanan</h2>
+        <div class="ticket-details">
+        <p>Nama: <span id="nama-penumpang"></span></p>
+        <p>Email: <span id="email-penumpang"></span></p>
+        <p>Nomor Telepon: <span id="telepon-penumpang"></span></p>
+        <p>Tujuan: <span id="tujuan-perjalanan"></span></p>
+        <p>Tanggal Keberangkatan: <span id="tanggal-keberangkatan"></span></p>
+        <p>Jumlah Penumpang: <span id="jumlah-penumpang"></span></p>
+        <p>Bus: <span id="jenis-bus"></span></p>
+        <p>Total Harga: <span id="total-harga"></span></p>
+      </div>
+    </div>
+  </section>
+  <footer class="footer">
+    <div class="container">
+      <div class="footer-content">
+        <div class="footer-left">
+          <h3>FanTrans.co</h3>
+          <p>Menyediakan layanan transportasi dengan berbagai pilihan armada untuk kebutuhan perjalanan Anda.</p>
+          <div class="social-media-icons">
+            <a href="#"><i class="fab fa-facebook-f"></i></a>
+            <a href="#"><i class="fab fa-twitter"></i></a>
+            <a href="#"><i class="fab fa-instagram"></i></a>
+          </div>
+        </div>
+        <div class="footer-right">
+          <h3>Kontak Kami</h3>
+          <ul>
+            <li><i class="fas fa-map-marker-alt"></i> Jl. Transportasi No. 123, Kota Anda</li>
+            <li><i class="fas fa-phone-alt"></i> +62 123 4567 890</li>
+            <li><i class="fas fa-envelope"></i> info@fantrans.co</li>
+          </ul>
+        </div>
+      </div>
+      <div class="footer-bottom">
+        <p>&copy; 2024 FanTrans.co. All rights reserved.</p>
+      </div>
+    </div>
+  </footer>
+  <script src="script.js"></script>
+  <script>
+    const urlParams = new URLSearchParams(window.location.search);
+    const nama = urlParams.get('nama');
+    const email = urlParams.get('email');
+    const telepon = urlParams.get('telepon');
+    const tujuan = urlParams.get('tujuan');
+    const tanggal = urlParams.get('tanggal');
+    const jumlah = urlParams.get('jumlah');
+    const bus = urlParams.get('bus');
+    const totalHarga = urlParams.get('totalHarga');
+    document.getElementById('nama-penumpang').textContent = nama;
+    document.getElementById('email-penumpang').textContent = email;
+    document.getElementById('telepon-penumpang').textContent = telepon;
+    document.getElementById('tujuan-perjalanan').textContent = tujuan;
+    document.getElementById('tanggal-keberangkatan').textContent = tanggal;
+    document.getElementById('jumlah-penumpang').textContent = jumlah;
+    document.getElementById('jenis-bus').textContent = bus;
+    document.getElementById('total-harga').textContent = totalHarga;
+  </script>
+</body>
+</html>
